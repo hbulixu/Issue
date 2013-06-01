@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSInteger id;
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSURL *imageURL;
 
 @end
