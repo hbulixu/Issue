@@ -27,7 +27,7 @@
     [self.view addSubview:backgroundImage];
     
     // Table
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 425)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 474)];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorColor = [UIColor clearColor];
@@ -38,7 +38,7 @@
     tap.cancelsTouchesInView = NO;
     [_tableView addGestureRecognizer:tap];
     
-    UIView *commentForm = [[UIView alloc] initWithFrame:CGRectMake(0, 425, 320, 30)];
+    UIView *commentForm = [[UIView alloc] initWithFrame:CGRectMake(0, 474, 320, 30)];
     commentForm.backgroundColor = [UIColor grayColor];
     _commentView = [[UITextView alloc] initWithFrame:CGRectMake(0, 5, 280, 20)];
     [commentForm addSubview:_commentView];
@@ -79,12 +79,12 @@
 }
 
 - (void)keyBoardDidShow{
-    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 167, 0);
+    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 216, 0);
     _tableView.scrollIndicatorInsets = inset;
     _tableView.contentInset = inset;
     UIView *commentForm = _commentView.superview;
     CGRect frame = commentForm.frame;
-    frame.origin.y -= 167;
+    frame.origin.y -= 216;
     commentForm.frame = frame;
 }
 
@@ -95,7 +95,7 @@
     }];
     UIView *commentForm = _commentView.superview;
     CGRect frame = commentForm.frame;
-    frame.origin.y = 425;
+    frame.origin.y = 474;
     commentForm.frame = frame;
 }
 
