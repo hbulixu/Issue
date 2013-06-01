@@ -13,6 +13,7 @@
 #import "ITPhoto.h"
 #import "ITFile.h"
 #import "UIImage+Picker.h"
+#import "ITPhotoViewController.h"
 
 @implementation ITFeedViewController
 
@@ -37,6 +38,8 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorColor = [UIColor clearColor];
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"edit_back"]];
+    _tableView.backgroundView = backgroundImage;
     [self.view addSubview:_tableView];
     
     _refreshControl = [[UIRefreshControl alloc] init];
@@ -76,7 +79,9 @@
 }
 
 - (void)imageTouched:(UIButton*)button{
-    NSLog(@"%d touched", button.tag);
+    ITPhotoViewController *photoView = [[ITPhotoViewController alloc] init];
+    photoView.photo = [_data objectAtIndex:button.tag];
+    [self.navigationController pushViewController:photoView animated:YES];
 }
 
 - (void)upload:(UIBarButtonItem*)item{
@@ -106,8 +111,6 @@
     }];
     [self presentViewController:picker animated:YES completion:nil];
 }
-
-#pragma mark - UIImagePickerControllerDelegate
 
 #pragma mark - UITableViewDataSource
 
