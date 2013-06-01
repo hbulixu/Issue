@@ -27,20 +27,20 @@
     ITNavigationController *currentFeedNav = [[ITNavigationController alloc] initWithRootViewController:currentFeed];
     [viewControllers addObject:currentFeedNav];
     
-    ITFeedViewController *prevFeed = [[ITFeedViewController alloc] init];
-    prevFeed.title = @"지난 피드";
-    ITNavigationController *prevFeedNav = [[ITNavigationController alloc] initWithRootViewController:prevFeed];
-    [viewControllers addObject:prevFeedNav];
+//    ITFeedViewController *prevFeed = [[ITFeedViewController alloc] init];
+//    prevFeed.title = @"지난 피드";
+//    ITNavigationController *prevFeedNav = [[ITNavigationController alloc] initWithRootViewController:prevFeed];
+//    [viewControllers addObject:prevFeedNav];
     
-    UIViewController *setting = [[UIViewController alloc] init];
-    setting.title = @"설정";
-    ITNavigationController *settingNav = [[ITNavigationController alloc] initWithRootViewController:setting];
-    [viewControllers addObject:settingNav];
+//    UIViewController *setting = [[UIViewController alloc] init];
+//    setting.title = @"설정";
+//    ITNavigationController *settingNav = [[ITNavigationController alloc] initWithRootViewController:setting];
+//    [viewControllers addObject:settingNav];
     
-    UITabBarController *tab = [[UITabBarController alloc] init];
-    tab.viewControllers = viewControllers;
-    tab.tabBar.tintColor = [UIColor whiteColor];
-    [self.window setRootViewController:tab];
+//    UITabBarController *tab = [[UITabBarController alloc] init];
+//    tab.viewControllers = viewControllers;
+//    tab.tabBar.tintColor = [UIColor whiteColor];
+    [self.window setRootViewController:currentFeedNav];
     
     if(![ITUtil loadSessionCookie]){
         ITLoginViewController *loginView = [[ITLoginViewController alloc] init];

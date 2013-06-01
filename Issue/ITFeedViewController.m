@@ -14,6 +14,7 @@
 #import "ITFile.h"
 #import "UIImage+Picker.h"
 #import "ITPhotoViewController.h"
+#import "ITUploadViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ITFeedViewController ()
@@ -72,24 +73,13 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [picker setFinishBlock:^(UIImagePickerController *picker, NSDictionary *info) {
-            [picker dismissViewControllerAnimated:YES completion:nil];
-            UIImage *image = [UIImage imageWithPickerInfo:info];
-            NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
-            ITFile *imageFile = [ITFile fileWithData:imageData name:@"image.jpg" mimeType:@"image/jpeg"];
-            NSDictionary *form = @{@"content": @"contentyoyoyo"},
-            *file = @{@"image": imageFile};
-            ITRequest *request = [ITRequest requestWithURLString:[NSString stringWithFormat:@"/issue/%d/photo/", self.issue.id]
-                                                          method:@"POST"
-                                                         getArgs:@{}
-                                                            form:form
-                                                           files:file];
-            [request setSuccessBlock:^(NSHTTPURLResponse *response, ITPhoto *photo) {
-                NSLog(@"success");
-            } failureBlock:^(NSHTTPURLResponse *response, NSError *error) {
-                NSLog(@"failed");
+            [picker dismissViewControllerAnimated:YES completion:^{
+                UIImage *image = [UIImage imageWithPickerInfo:info];
+                ITUploadViewController *vc = [[ITUploadViewController alloc] initWithNibName:@"ITUploadViewController" bundle:nil];
+                [self presentViewController:vc animated:YES completion:nil];
+                vc.backgroundImageView.image = image;
+                vc.issue = self.issue;
             }];
-            [request startWithUploadHUDInView:self.view];
-            
         }];
         [picker setCancelBlock:^(UIImagePickerController *picker) {
             [picker dismissViewControllerAnimated:YES completion:nil];
@@ -129,7 +119,10 @@
     // Update data with self.URL
     ITRequest *issueRequest = [ITRequest requestWithURLString:@"/issue/current" method:@"GET" getArgs:@{}];
     [issueRequest setSuccessBlock:^(NSHTTPURLResponse *response, ITIssue *issue){
+        [self.tableView beginUpdates];
         self.issue = issue;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
         ITRequest *feedRequest = [ITRequest requestWithURLString:[NSString stringWithFormat:@"/issue/%d/photo/", issue.id]
                                                           method:@"GET"
                                                          getArgs:@{}];
@@ -208,7 +201,11 @@
             if (tv.tag != 1) {
                 continue;
             }
-            tv.text = [NSString stringWithFormat:@"%@\n===============\n%@",self.issue.title, self.issue.description];
+            if (self.issue){
+                tv.text = [NSString stringWithFormat:@"%@\n===============\n%@",self.issue.title, self.issue.description];
+            } else{
+                tv.text = @"Loading...";
+            }
         }
         return cell;
     }
@@ -272,7 +269,7 @@
             imageView1.layer.masksToBounds = YES;
             
             
-            imageButton1.tag = indexPath.row * 2;
+            imageButton1.tag = indexPath.row * 2 - 1;
             [imageButton1 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
             [imageButton1 addSubview:imageView1];
             // Shadow
