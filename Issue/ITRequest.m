@@ -40,7 +40,7 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         self.executing = NO;
         self.finished = YES;
-        self.successBlock(operation.response, error);
+        self.failureBlock(operation.response, error);
     }];
     [operation start];
     self.operation = operation;
@@ -48,7 +48,7 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
 
 #pragma mark - Class methods
 
-+ (void)loaderThreadEntryPoint:(id)object{
++ (void)requestThreadEntryPoint:(id)object{
     do {
         @autoreleasepool {
             [[NSRunLoop currentRunLoop] run];
@@ -56,11 +56,11 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
     } while (YES);
 }
 
-+ (NSThread*)loaderThread{
++ (NSThread*)requestThread{
     static NSThread *thread;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        thread = [[NSThread alloc] initWithTarget:self selector:@selector(loaderThreadEntryPoint:) object:nil];
+        thread = [[NSThread alloc] initWithTarget:self selector:@selector(requestThreadEntryPoint:) object:nil];
         [thread setName:@"Request Thread"];
         [thread start];
     });
@@ -136,10 +136,7 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
     dispatch_once(&onceToken, ^{
         selector = @selector(sendRequest);
     });
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:selector]];
-    [invocation setTarget:self];
-    [invocation setSelector:selector];
-    [invocation performSelector:@selector(invoke) onThread:[[self class] loaderThread] withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(sendRequest) onThread:[[self class] requestThread] withObject:nil waitUntilDone:NO];
 }
 
 - (void)cancel{

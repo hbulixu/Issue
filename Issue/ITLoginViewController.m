@@ -10,6 +10,9 @@
 #import "ITUtil.h"
 #import "AFHTTPClient.h"
 
+#import "ITURLRequest.h"
+#import "ITRequest.h"
+
 
 @implementation ITLoginViewController
 @synthesize usernameLabel = _usernameLabel, usernameField = _usernameField,
@@ -53,18 +56,15 @@
 
 - (void)login{
     if([_usernameField.text length] > 0 && [_passwordField.text length] > 0){
-        AFHTTPClient *client = [ITUtil getHttpClient];
         NSDictionary *params = @{@"username": _usernameField.text,
                                  @"password": _passwordField.text};
-        [client postPath:@"/login"
-                parameters:params
-                success:^(AFHTTPRequestOperation *operation, id responseObject){
-                    NSLog(@"success");
-                }
-                failure:^(AFHTTPRequestOperation *operation, NSError *error){
-                    NSLog(@"failed");
-                }
-        ];
+        ITRequest *request = [ITRequest requestWithURLString:@"/login" method:@"POST" getArgs:@{} form:params files:nil];
+        [request setSuccessBlock:^(NSHTTPURLResponse* response, id object){
+            NSLog(@"success");
+        } failureBlock:^(NSHTTPURLResponse *response, NSError *error){
+            NSLog(@"failed");
+        }];
+        [request start];
     }
     else{
         NSLog(@"Fields must be filled");

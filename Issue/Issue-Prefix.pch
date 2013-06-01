@@ -17,7 +17,8 @@
     #import "UIImage+SizeAddition.h"
     #import "UIColor+Addtions.h"
     #import "NSString+NumberAddition.h"
-    #import "HTConfig.h"
+    #import "HTBlock.h"
+    #import "HTPyFunctions.h"
 
     #define ServerBaseUrl @"http://ec2-54-248-49-157.ap-northeast-1.compute.amazonaws.com:8080"
 #endif
