@@ -9,6 +9,7 @@
 #import "ITPhotoViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "ITRequest.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define CommentStartRow 3
 
@@ -19,10 +20,18 @@
     [super viewDidLoad];
     _comments = [NSArray array];
     
+    // BG
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"edit_back"]];
+    backgroundImage.frame = self.view.bounds;
+    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:backgroundImage];
+    
+    // Table
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 425)];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorColor = [UIColor clearColor];
+    _tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_tableView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
@@ -149,6 +158,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if(indexPath.row == 0){
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(6, 6, 308, 308)];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = YES;
+            imageView.layer.cornerRadius = 5.0;
             [imageView setImageWithURL:_photo.imageURL];
             imageView.userInteractionEnabled = YES;
             UIButton *likeButton = [[UIButton alloc] initWithFrame:CGRectMake(262, 262, 40, 40)];
