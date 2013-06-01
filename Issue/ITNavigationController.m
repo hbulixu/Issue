@@ -10,10 +10,12 @@
 
 @implementation ITNavigationController
 
-- (id)init{
-    self = [super init];
+- (id)initWithRootViewController:(UIViewController *)rootViewController{
+    self = [super initWithRootViewController:rootViewController];
     if(self){
         self.navigationBar.tintColor = [UIColor whiteColor];
+        NSDictionary *options = @{UITextAttributeTextColor: [UIColor blackColor]};
+        self.navigationBar.titleTextAttributes = options;
     }
     return self;
 }

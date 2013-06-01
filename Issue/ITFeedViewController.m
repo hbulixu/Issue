@@ -36,7 +36,7 @@
 # pragma mark - Custom Methods
 
 - (void)refresh{
-    // Update data
+    // Update data with self.URL
     self.data = @[@{@"type": @"picture",
                     @"username": @"Danny",
                     @"url": @"https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-prn2/216339_652035021489348_692528687_n.jpg"},
@@ -63,13 +63,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
         NSString *urlString = [[_data objectAtIndex:indexPath.row * 2] objectForKey:@"url"];
         [imageView1 setImageWithURL:[NSURL URLWithString:urlString]];
-        imageView1.tag = 0;
+        imageView1.backgroundColor = [UIColor grayColor];
+        imageView1.tag = 1;
         CGRect frame = imageView1.bounds;
         frame.origin.x = 6;
-        frame.origin.y = 3;
+        frame.origin.y = 6;
         UIButton *imageButton1 = [[UIButton alloc] initWithFrame:frame];
         imageButton1.tag = indexPath.row * 2;
         [imageButton1 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
@@ -80,10 +82,11 @@
             UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
             urlString = [[_data objectAtIndex:indexPath.row * 2 + 1] objectForKey:@"url"];
             [imageView2 setImageWithURL:[NSURL URLWithString:urlString]];
-            imageView2.tag = 1;
+            imageView2.backgroundColor = [UIColor grayColor];
+            imageView2.tag = 2;
             frame = imageView1.bounds;
             frame.origin.x = 163;
-            frame.origin.y = 3;
+            frame.origin.y = 6;
             UIButton *imageButton2 = [[UIButton alloc] initWithFrame:frame];
             imageButton2.tag = indexPath.row * 2 + 1;
             [imageButton2 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
@@ -95,7 +98,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 157;
+    return 163;
 }
 
 @end

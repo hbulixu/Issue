@@ -14,6 +14,7 @@
 + (AFHTTPClient*)getHttpClient;
 + (void)clearCookie;
 + (void)checkLoggedIn;
++ (void)updateSession;
 + (BOOL)loadSessionCookie;
 
 @end

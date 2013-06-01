@@ -8,8 +8,6 @@
 
 #import "ITLoginViewController.h"
 #import "ITUtil.h"
-#import "AFHTTPClient.h"
-
 #import "ITURLRequest.h"
 #import "ITRequest.h"
 
@@ -60,7 +58,10 @@
                                  @"password": _passwordField.text};
         ITRequest *request = [ITRequest requestWithURLString:@"/login" method:@"POST" getArgs:@{} form:params files:nil];
         [request setSuccessBlock:^(NSHTTPURLResponse* response, id object){
-            NSLog(@"success");
+            [ITUtil updateSession];
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"success");
+            }];
         } failureBlock:^(NSHTTPURLResponse *response, NSError *error){
             NSLog(@"failed");
         }];

@@ -29,6 +29,18 @@
     
 }
 
++ (void)updateSession{
+    NSArray *cookies=[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:ServerBaseUrl]];
+    for(NSHTTPCookie *cookie in cookies){
+        if([cookie.name isEqualToString:@"session"]){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:cookie.value forKey:@"session"];
+            [defaults synchronize];
+            break;
+        }
+    }
+}
+
 + (BOOL)loadSessionCookie{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *session = [defaults objectForKey:@"session"];
@@ -41,10 +53,10 @@
                                session, NSHTTPCookieValue,
                                nil]];
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-        [defaults setObject:session forKey:@"session"];
         return YES;
     }
     [defaults removeObjectForKey:@"session"];
+    [defaults synchronize];
     [ITUtil clearCookie];
     return NO;
 }

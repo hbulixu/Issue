@@ -21,9 +21,26 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    ITFeedViewController *feedView = [[ITFeedViewController alloc] init];
-    ITNavigationController *nav = [[ITNavigationController alloc] initWithRootViewController:feedView];
-    [self.window setRootViewController:nav];
+    NSMutableArray *viewControllers = [NSMutableArray array];
+    ITFeedViewController *currentFeed = [[ITFeedViewController alloc] init];
+    currentFeed.title = @"현재 피드";
+    ITNavigationController *currentFeedNav = [[ITNavigationController alloc] initWithRootViewController:currentFeed];
+    [viewControllers addObject:currentFeedNav];
+    
+    ITFeedViewController *prevFeed = [[ITFeedViewController alloc] init];
+    prevFeed.title = @"지난 피드";
+    ITNavigationController *prevFeedNav = [[ITNavigationController alloc] initWithRootViewController:prevFeed];
+    [viewControllers addObject:prevFeedNav];
+    
+    UIViewController *setting = [[UIViewController alloc] init];
+    setting.title = @"설정";
+    ITNavigationController *settingNav = [[ITNavigationController alloc] initWithRootViewController:setting];
+    [viewControllers addObject:settingNav];
+    
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    tab.viewControllers = viewControllers;
+    tab.tabBar.tintColor = [UIColor whiteColor];
+    [self.window setRootViewController:tab];
     
     if(![ITUtil loadSessionCookie]){
         ITLoginViewController *loginView = [[ITLoginViewController alloc] init];

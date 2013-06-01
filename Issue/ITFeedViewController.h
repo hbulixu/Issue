@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSURL *URL;
 
 @end

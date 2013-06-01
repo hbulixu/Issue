@@ -36,6 +36,7 @@
 		236D5867175A398C006763A5 /* ITRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5866175A398C006763A5 /* ITRequest.m */; };
 		236D586A175A3C42006763A5 /* ITFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5869175A3C42006763A5 /* ITFile.m */; };
 		236D586D175A3D16006763A5 /* ITURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D586C175A3D16006763A5 /* ITURLRequest.m */; };
+		300F8DEA175A5CD0004E0FDE /* ITPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */; };
 		306FFDB01759ECE10025214A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDAF1759ECE10025214A /* UIKit.framework */; };
 		306FFDB21759ECE10025214A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB11759ECE10025214A /* Foundation.framework */; };
 		306FFDB41759ECE10025214A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB31759ECE10025214A /* CoreGraphics.framework */; };
@@ -152,6 +153,8 @@
 		236D5869175A3C42006763A5 /* ITFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFile.m; sourceTree = "<group>"; };
 		236D586B175A3D16006763A5 /* ITURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITURLRequest.h; sourceTree = "<group>"; };
 		236D586C175A3D16006763A5 /* ITURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITURLRequest.m; sourceTree = "<group>"; };
+		300F8DE8175A5CD0004E0FDE /* ITPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPhotoViewController.h; sourceTree = "<group>"; };
+		300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITPhotoViewController.m; sourceTree = "<group>"; };
 		306FFDAC1759ECE10025214A /* Issue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306FFDAF1759ECE10025214A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		306FFDB11759ECE10025214A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -405,6 +408,8 @@
 				306FFDF2175A16320025214A /* ITNavigationController.m */,
 				306FFDF4175A17980025214A /* ITFeedViewController.h */,
 				306FFDF5175A17980025214A /* ITFeedViewController.m */,
+				300F8DE8175A5CD0004E0FDE /* ITPhotoViewController.h */,
+				300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */,
 			);
 			name = "Issue Tracker";
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				236D5867175A398C006763A5 /* ITRequest.m in Sources */,
 				236D586A175A3C42006763A5 /* ITFile.m in Sources */,
 				236D586D175A3D16006763A5 /* ITURLRequest.m in Sources */,
+				300F8DEA175A5CD0004E0FDE /* ITPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
