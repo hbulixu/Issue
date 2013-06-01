@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ITPhoto.h"
+#import "ITComment.h"
 
 @interface ITPhotoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ITPhoto *photo;
+@property (nonatomic, strong) NSArray *comments;
+@property (nonatomic, strong) UITextView *commentView;
 
 @end
