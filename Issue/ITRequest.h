@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HTAsyncOperation.h"
 #import "ITFile.h"
+#import "AFJSONRequestOperation.h"
 
 @interface ITRequest : HTAsyncOperation
 
@@ -23,8 +24,8 @@
 
 - (id)initWithURL:(NSURL *)URL method:(NSString*)method;
 - (id)initWithURL:(NSURL *)URL method:(NSString*)method form:(NSDictionary *)form files:(NSDictionary *)files;
-- (id)initWithURLString:(NSString *)URLString method:(NSString*)method getArgs:(NSDictionary *)getArgs;
-- (id)initWithURLString:(NSString *)URLString method:(NSString*)method getArgs:(NSDictionary *)getArgs form:(NSDictionary *)form files:(NSDictionary *)files;
+
+@property (nonatomic, strong) AFJSONRequestOperation *operation;- (id)initWithURLString:(NSString *)URLString method:(NSString*)method getArgs:(NSDictionary *)getArgs form:(NSDictionary *)form files:(NSDictionary *)files;
 
 - (void)setSuccessBlock:(void (^)(NSHTTPURLResponse *, id))successBlock failureBlock:(void (^)(NSHTTPURLResponse *, NSError *))failureBlock;
 

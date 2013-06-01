@@ -59,6 +59,10 @@
 		236D58BD175A87ED006763A5 /* edit_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58BB175A87ED006763A5 /* edit_back@2x.png */; };
 		236D58BE175A87ED006763A5 /* edit_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58BC175A87ED006763A5 /* edit_back.png */; };
 		236D58CD175A8890006763A5 /* libMeetyClipView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 236D58CA175A8870006763A5 /* libMeetyClipView.a */; };
+		236D58D6175A92D9006763A5 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58D4175A92D9006763A5 /* plus@2x.png */; };
+		236D58D7175A92D9006763A5 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58D5175A92D9006763A5 /* plus.png */; };
+		236D58DA175A9305006763A5 /* plus2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58D8175A9305006763A5 /* plus2@2x.png */; };
+		236D58DB175A9305006763A5 /* plus2.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58D9175A9305006763A5 /* plus2.png */; };
 		300F8DEA175A5CD0004E0FDE /* ITPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */; };
 		306FFDB01759ECE10025214A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDAF1759ECE10025214A /* UIKit.framework */; };
 		306FFDB21759ECE10025214A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB11759ECE10025214A /* Foundation.framework */; };
@@ -233,6 +237,10 @@
 		236D58BB175A87ED006763A5 /* edit_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_back@2x.png"; sourceTree = "<group>"; };
 		236D58BC175A87ED006763A5 /* edit_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_back.png; sourceTree = "<group>"; };
 		236D58C5175A886F006763A5 /* MeetyClipView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MeetyClipView.xcodeproj; path = MeetyClipView/MeetyClipView.xcodeproj; sourceTree = SOURCE_ROOT; };
+		236D58D4175A92D9006763A5 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		236D58D5175A92D9006763A5 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		236D58D8175A9305006763A5 /* plus2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus2@2x.png"; sourceTree = "<group>"; };
+		236D58D9175A9305006763A5 /* plus2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus2.png; sourceTree = "<group>"; };
 		300F8DE8175A5CD0004E0FDE /* ITPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPhotoViewController.h; sourceTree = "<group>"; };
 		300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITPhotoViewController.m; sourceTree = "<group>"; };
 		306FFDAC1759ECE10025214A /* Issue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -455,6 +463,10 @@
 		236D58BA175A87D2006763A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				236D58D4175A92D9006763A5 /* plus@2x.png */,
+				236D58D5175A92D9006763A5 /* plus.png */,
+				236D58D8175A9305006763A5 /* plus2@2x.png */,
+				236D58D9175A9305006763A5 /* plus2.png */,
 				236D58BB175A87ED006763A5 /* edit_back@2x.png */,
 				236D58BC175A87ED006763A5 /* edit_back.png */,
 			);
@@ -700,6 +712,10 @@
 				306FFDC61759ECE10025214A /* Default-568h@2x.png in Resources */,
 				236D58BD175A87ED006763A5 /* edit_back@2x.png in Resources */,
 				236D58BE175A87ED006763A5 /* edit_back.png in Resources */,
+				236D58D6175A92D9006763A5 /* plus@2x.png in Resources */,
+				236D58D7175A92D9006763A5 /* plus.png in Resources */,
+				236D58DA175A9305006763A5 /* plus2@2x.png in Resources */,
+				236D58DB175A9305006763A5 /* plus2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

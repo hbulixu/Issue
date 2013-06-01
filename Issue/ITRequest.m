@@ -10,11 +10,9 @@
 #import "NSDictionary+URLExtensions.h"
 #import "ITURLRequest.h"
 #import "ITConverter.h"
-#import "AFJSONRequestOperation.h"
+#import "NSDataAdditions.h"
 
 @interface ITRequest ()
-
-@property (nonatomic, strong) AFJSONRequestOperation *operation;
 
 @end
 
@@ -31,6 +29,12 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
     }
     [request setHTTPMethod:self.method];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:@"password"];
+    if (username && password) {
+        NSString *auth = [[[NSString stringWithFormat:@"%@:%@",[username lowercaseString], password] dataUsingEncoding:NSUTF8StringEncoding] base64Encoding];
+        [request setValue:[NSString stringWithFormat:@"Basic %@",auth] forHTTPHeaderField:@"Authorization"];
+    }
     
     AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

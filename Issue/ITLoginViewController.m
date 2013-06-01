@@ -56,6 +56,10 @@
                                  @"password": _passwordField.text};
         ITRequest *request = [ITRequest requestWithURLString:@"/login" method:@"POST" getArgs:@{} form:params files:nil];
         [request setSuccessBlock:^(NSHTTPURLResponse* response, id object){
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:_usernameField.text forKey:@"username"];
+            [defaults setObject:_passwordField.text forKey:@"password"];
+            [defaults synchronize];
             [ITUtil updateSession];
             [ITUtil loadSessionCookie];
             [self dismissViewControllerAnimated:YES completion:^{

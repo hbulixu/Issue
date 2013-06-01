@@ -14,6 +14,13 @@
 #import "ITFile.h"
 #import "UIImage+Picker.h"
 #import "ITPhotoViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface ITFeedViewController ()
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@end
 
 @implementation ITFeedViewController
 
@@ -34,12 +41,73 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    // BG
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"edit_back"]];
+    backgroundImage.frame = self.view.bounds;
+    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:backgroundImage];
+    
+    // Title
+    self.titleLabel = [[UILabel alloc] init];
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:24.0f];
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.backgroundColor = [UIColor clearColor];
+    self.titleLabel.text = @"Feed";
+    [self.titleLabel sizeToFit];
+    self.titleLabel.centerY = 22;
+    self.titleLabel.centerX = self.view.width / 2;
+//    self.titleLabel.layer.shadowRadius = 0;
+//    self.titleLabel.layer.shadowOpacity = 0.8;
+//    self.titleLabel.layer.shadowOffset = CGSizeMake(1,1);
+//    self.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    [self.view addSubview:self.titleLabel];
+    
+    // Plus
+    UIButton *plusButton = [[UIButton alloc] init];
+    [plusButton setBackgroundImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
+    [plusButton setBackgroundImage:[UIImage imageNamed:@"plus2"] forState:UIControlStateHighlighted];
+    [plusButton addTargetBlock:^(id sender) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [picker setFinishBlock:^(UIImagePickerController *picker, NSDictionary *info) {
+            UIImage *image = [UIImage imageWithPickerInfo:info];
+            NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
+            ITFile *imageFile = [ITFile fileWithData:imageData name:@"image.jpg" mimeType:@"image/jpeg"];
+            NSDictionary *form = @{@"content": @"contentyoyoyo"},
+            *file = @{@"image": imageFile};
+            ITRequest *request = [ITRequest requestWithURLString:@"/issue/1/photo/"
+                                                          method:@"POST"
+                                                         getArgs:@{}
+                                                            form:form
+                                                           files:file];
+            [request setSuccessBlock:^(NSHTTPURLResponse *response, ITPhoto *photo) {
+                NSLog(@"success");
+            } failureBlock:^(NSHTTPURLResponse *response, NSError *error) {
+                NSLog(@"failed");
+            }];
+            [request start];
+            
+        }];
+        [picker setCancelBlock:^(UIImagePickerController *picker) {
+            [picker dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [self presentViewController:picker animated:YES completion:nil];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [plusButton sizeToFit];
+    plusButton.right = self.view.width - 6;
+    plusButton.centerY = 22;
+    [self.view addSubview:plusButton];
+    
+    // Table
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    _tableView.height -= 44;
+    _tableView.top += 44;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorColor = [UIColor clearColor];
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"edit_back"]];
-    _tableView.backgroundView = backgroundImage;
+    _tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_tableView];
     
     _refreshControl = [[UIRefreshControl alloc] init];
@@ -84,79 +152,119 @@
     [self.navigationController pushViewController:photoView animated:YES];
 }
 
-- (void)upload:(UIBarButtonItem*)item{
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [picker setFinishBlock:^(UIImagePickerController *picker, NSDictionary *info) {
-        UIImage *image = [UIImage imageWithPickerInfo:info];
-        NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
-        ITFile *imageFile = [ITFile fileWithData:imageData name:@"image.jpg" mimeType:@"image/jpeg"];
-        NSDictionary *form = @{@"content": @"contentyoyoyo"},
-                     *file = @{@"image": imageFile};
-        ITRequest *request = [ITRequest requestWithURLString:@"/issue/1/photo/"
-                                                      method:@"POST"
-                                                     getArgs:@{}
-                                                        form:form
-                                                       files:file];
-        [request setSuccessBlock:^(NSHTTPURLResponse *response, ITPhoto *photo) {
-            NSLog(@"success");
-        } failureBlock:^(NSHTTPURLResponse *response, NSError *error) {
-            NSLog(@"failed");
-        }];
-        [request start];
-
-    }];
-    [picker setCancelBlock:^(UIImagePickerController *picker) {
-        [picker dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [self presentViewController:picker animated:YES completion:nil];
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(_data.count > 0)
-        return _data.count / 2 + _data.count % 2;
+    if(_data.count > 0){
+        return 1 + (_data.count-1) / 2 + (_data.count-1) % 2;
+    }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"FeedViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
-        NSURL *url = [(ITPhoto*)[_data objectAtIndex:indexPath.row * 2] imageURL];
-        [imageView1 setImageWithURL:url];
-        imageView1.backgroundColor = [UIColor grayColor];
-        imageView1.tag = 1;
-        CGRect frame = imageView1.bounds;
-        frame.origin.x = 6;
-        frame.origin.y = 3;
-        UIButton *imageButton1 = [[UIButton alloc] initWithFrame:frame];
-        imageButton1.tag = indexPath.row * 2;
-        [imageButton1 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
-        [imageButton1 addSubview:imageView1];
-        [cell addSubview:imageButton1];
-        
-        if(_data.count >= (indexPath.row + 1) * 2){
-            UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
-            url = [(ITPhoto*)[_data objectAtIndex:indexPath.row * 2 + 1] imageURL];
-            [imageView2 setImageWithURL:url];
-            imageView2.backgroundColor = [UIColor grayColor];
-            imageView2.tag = 2;
-            frame = imageView1.bounds;
-            frame.origin.x = 163;
+    if (indexPath.row == 0) { // Top
+        static NSString *identifier = @"TopID";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 308, 151)];
+            NSURL *url = [(ITPhoto*)[_data objectAtIndex:0] imageURL];
+            [imageView1 setImageWithURL:url];
+            imageView1.backgroundColor = [UIColor grayColor];
+            imageView1.tag = 1;
+            CGRect frame = imageView1.bounds;
+            frame.origin.x = 6;
             frame.origin.y = 3;
-            UIButton *imageButton2 = [[UIButton alloc] initWithFrame:frame];
-            imageButton2.tag = indexPath.row * 2 + 1;
-            [imageButton2 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
-            [imageButton2 addSubview:imageView2];
-            [cell addSubview:imageButton2];
+            UIButton *imageButton1 = [[UIButton alloc] initWithFrame:frame];
+            imageView1.clipsToBounds = YES;
+            imageView1.contentMode = UIViewContentModeScaleAspectFill;
+            
+            // Rad
+            imageView1.layer.cornerRadius = 5.0;
+            imageView1.layer.masksToBounds = YES;
+            
+            
+            imageButton1.tag = indexPath.row * 2;
+            [imageButton1 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
+            [imageButton1 addSubview:imageView1];
+            // Shadow
+            imageButton1.layer.shadowColor = [UIColor blackColor].CGColor;
+            imageButton1.layer.shadowOpacity = 0.8;
+            imageButton1.layer.shadowRadius = 1.0;
+            imageButton1.layer.shadowOffset = CGSizeMake(1, 1);
+            imageButton1.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+            imageButton1.layer.shouldRasterize = YES;
+            [cell addSubview:imageButton1];
         }
+        return cell;
+    } else {
+        static NSString *identifier = @"FeedViewCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if(cell == nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
+            NSURL *url = [(ITPhoto*)[_data objectAtIndex:(indexPath.row-1) * 2 + 1] imageURL];
+            [imageView1 setImageWithURL:url];
+            imageView1.backgroundColor = [UIColor grayColor];
+            imageView1.tag = 1;
+            CGRect frame = imageView1.bounds;
+            frame.origin.x = 6;
+            frame.origin.y = 3;
+            UIButton *imageButton1 = [[UIButton alloc] initWithFrame:frame];
+            imageView1.clipsToBounds = YES;
+            imageView1.contentMode = UIViewContentModeScaleAspectFill;
+            
+            // Rad
+            imageView1.layer.cornerRadius = 5.0;
+            imageView1.layer.masksToBounds = YES;
+            
+            
+            imageButton1.tag = indexPath.row * 2;
+            [imageButton1 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
+            [imageButton1 addSubview:imageView1];
+            // Shadow
+            imageButton1.layer.shadowColor = [UIColor blackColor].CGColor;
+            imageButton1.layer.shadowOpacity = 0.8;
+            imageButton1.layer.shadowRadius = 1.0;
+            imageButton1.layer.shadowOffset = CGSizeMake(1, 1);
+            imageButton1.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+            imageButton1.layer.shouldRasterize = YES;
+            [cell addSubview:imageButton1];
+            
+            if(_data.count-1 >= (indexPath.row - 1 + 1) * 2){
+                UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
+                url = [(ITPhoto*)[_data objectAtIndex:indexPath.row * 2] imageURL];
+                [imageView2 setImageWithURL:url];
+                imageView2.clipsToBounds = YES;
+                imageView2.backgroundColor = [UIColor grayColor];
+                imageView2.tag = 2;
+                
+                // Rad
+                imageView2.layer.cornerRadius = 5.0;
+                imageView2.layer.masksToBounds = YES;
+                
+                imageView2.contentMode = UIViewContentModeScaleAspectFill;
+                frame = imageView1.bounds;
+                frame.origin.x = 163;
+                frame.origin.y = 3;
+                UIButton *imageButton2 = [[UIButton alloc] initWithFrame:frame];
+                imageButton2.tag = indexPath.row * 2 + 1;
+                [imageButton2 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
+                [imageButton2 addSubview:imageView2];
+                
+                imageButton2.layer.shadowColor = [UIColor blackColor].CGColor;
+                imageButton2.layer.shadowOpacity = 0.8;
+                imageButton2.layer.shadowRadius = 1.0;
+                imageButton2.layer.shadowOffset = CGSizeMake(1, 1);
+                imageButton2.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+                imageButton2.layer.shouldRasterize = YES;
+                [cell addSubview:imageButton2];
+            }
+        }
+        return cell;
     }
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
