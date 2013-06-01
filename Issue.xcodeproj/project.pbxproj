@@ -41,6 +41,21 @@
 		236D5879175A61C2006763A5 /* ITComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5878175A61C2006763A5 /* ITComment.m */; };
 		236D5886175A7280006763A5 /* UIImage+MeetyBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5885175A7280006763A5 /* UIImage+MeetyBlur.m */; };
 		236D5889175A73F8006763A5 /* UIImage+Picker.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5888175A73F8006763A5 /* UIImage+Picker.m */; };
+		236D5896175A74AE006763A5 /* UIImage+HTLong.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D588B175A74AD006763A5 /* UIImage+HTLong.m */; };
+		236D5897175A74AE006763A5 /* UIView+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D588D175A74AD006763A5 /* UIView+FirstResponder.m */; };
+		236D5898175A74AE006763A5 /* NSObject+HijackMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D588F175A74AD006763A5 /* NSObject+HijackMethod.m */; };
+		236D5899175A74AE006763A5 /* UIResponder+FirstresponderNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5891175A74AE006763A5 /* UIResponder+FirstresponderNotification.m */; };
+		236D589A175A74AE006763A5 /* NSObject+SimpleClassChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5893175A74AE006763A5 /* NSObject+SimpleClassChecking.m */; };
+		236D589B175A74AE006763A5 /* UIViewController+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5895175A74AE006763A5 /* UIViewController+Hierarchy.m */; };
+		236D589F175A74D1006763A5 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D589E175A74D1006763A5 /* UIImage+StackBlur.m */; };
+		236D58AD175A74EF006763A5 /* UIImage+AutoLevels.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58A2175A74EF006763A5 /* UIImage+AutoLevels.m */; };
+		236D58AE175A74EF006763A5 /* UIImage+Brightness.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58A4175A74EF006763A5 /* UIImage+Brightness.m */; };
+		236D58AF175A74EF006763A5 /* UIImage+Contrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58A6175A74EF006763A5 /* UIImage+Contrast.m */; };
+		236D58B0175A74EF006763A5 /* UIImage+FixRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58A8175A74EF006763A5 /* UIImage+FixRotation.m */; };
+		236D58B1175A74EF006763A5 /* UIImage+Gaussian.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58AA175A74EF006763A5 /* UIImage+Gaussian.m */; };
+		236D58B2175A74EF006763A5 /* UIImage+Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58AC175A74EF006763A5 /* UIImage+Thumbnail.m */; };
+		236D58B7175A755B006763A5 /* UIImage+MeetyProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58B6175A755B006763A5 /* UIImage+MeetyProcess.m */; };
+		236D58B8175A7588006763A5 /* MeetyFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58B4175A752F006763A5 /* MeetyFunctions.m */; };
 		300F8DEA175A5CD0004E0FDE /* ITPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */; };
 		306FFDB01759ECE10025214A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDAF1759ECE10025214A /* UIKit.framework */; };
 		306FFDB21759ECE10025214A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB11759ECE10025214A /* Foundation.framework */; };
@@ -168,6 +183,36 @@
 		236D5885175A7280006763A5 /* UIImage+MeetyBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MeetyBlur.m"; sourceTree = "<group>"; };
 		236D5887175A73F8006763A5 /* UIImage+Picker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Picker.h"; sourceTree = "<group>"; };
 		236D5888175A73F8006763A5 /* UIImage+Picker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Picker.m"; sourceTree = "<group>"; };
+		236D588A175A74AD006763A5 /* UIImage+HTLong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HTLong.h"; sourceTree = "<group>"; };
+		236D588B175A74AD006763A5 /* UIImage+HTLong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HTLong.m"; sourceTree = "<group>"; };
+		236D588C175A74AD006763A5 /* UIView+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FirstResponder.h"; sourceTree = "<group>"; };
+		236D588D175A74AD006763A5 /* UIView+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FirstResponder.m"; sourceTree = "<group>"; };
+		236D588E175A74AD006763A5 /* NSObject+HijackMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HijackMethod.h"; sourceTree = "<group>"; };
+		236D588F175A74AD006763A5 /* NSObject+HijackMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HijackMethod.m"; sourceTree = "<group>"; };
+		236D5890175A74AE006763A5 /* UIResponder+FirstresponderNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstresponderNotification.h"; sourceTree = "<group>"; };
+		236D5891175A74AE006763A5 /* UIResponder+FirstresponderNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstresponderNotification.m"; sourceTree = "<group>"; };
+		236D5892175A74AE006763A5 /* NSObject+SimpleClassChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SimpleClassChecking.h"; sourceTree = "<group>"; };
+		236D5893175A74AE006763A5 /* NSObject+SimpleClassChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SimpleClassChecking.m"; sourceTree = "<group>"; };
+		236D5894175A74AE006763A5 /* UIViewController+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Hierarchy.h"; sourceTree = "<group>"; };
+		236D5895175A74AE006763A5 /* UIViewController+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Hierarchy.m"; sourceTree = "<group>"; };
+		236D589D175A74D1006763A5 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
+		236D589E175A74D1006763A5 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
+		236D58A1175A74EF006763A5 /* UIImage+AutoLevels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AutoLevels.h"; sourceTree = "<group>"; };
+		236D58A2175A74EF006763A5 /* UIImage+AutoLevels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AutoLevels.m"; sourceTree = "<group>"; };
+		236D58A3175A74EF006763A5 /* UIImage+Brightness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Brightness.h"; sourceTree = "<group>"; };
+		236D58A4175A74EF006763A5 /* UIImage+Brightness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Brightness.m"; sourceTree = "<group>"; };
+		236D58A5175A74EF006763A5 /* UIImage+Contrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Contrast.h"; sourceTree = "<group>"; };
+		236D58A6175A74EF006763A5 /* UIImage+Contrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Contrast.m"; sourceTree = "<group>"; };
+		236D58A7175A74EF006763A5 /* UIImage+FixRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixRotation.h"; sourceTree = "<group>"; };
+		236D58A8175A74EF006763A5 /* UIImage+FixRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixRotation.m"; sourceTree = "<group>"; };
+		236D58A9175A74EF006763A5 /* UIImage+Gaussian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gaussian.h"; sourceTree = "<group>"; };
+		236D58AA175A74EF006763A5 /* UIImage+Gaussian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Gaussian.m"; sourceTree = "<group>"; };
+		236D58AB175A74EF006763A5 /* UIImage+Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Thumbnail.h"; sourceTree = "<group>"; };
+		236D58AC175A74EF006763A5 /* UIImage+Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Thumbnail.m"; sourceTree = "<group>"; };
+		236D58B3175A752F006763A5 /* MeetyFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeetyFunctions.h; sourceTree = "<group>"; };
+		236D58B4175A752F006763A5 /* MeetyFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetyFunctions.m; sourceTree = "<group>"; };
+		236D58B5175A755A006763A5 /* UIImage+MeetyProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MeetyProcess.h"; sourceTree = "<group>"; };
+		236D58B6175A755B006763A5 /* UIImage+MeetyProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MeetyProcess.m"; sourceTree = "<group>"; };
 		300F8DE8175A5CD0004E0FDE /* ITPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPhotoViewController.h; sourceTree = "<group>"; };
 		300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITPhotoViewController.m; sourceTree = "<group>"; };
 		306FFDAC1759ECE10025214A /* Issue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +356,8 @@
 		236D5861175A3384006763A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				236D58B3175A752F006763A5 /* MeetyFunctions.h */,
+				236D58B4175A752F006763A5 /* MeetyFunctions.m */,
 				236D5862175A339B006763A5 /* ITConverter.h */,
 				236D5863175A339B006763A5 /* ITConverter.m */,
 				236D586B175A3D16006763A5 /* ITURLRequest.h */,
@@ -330,8 +377,50 @@
 				236D5885175A7280006763A5 /* UIImage+MeetyBlur.m */,
 				236D5887175A73F8006763A5 /* UIImage+Picker.h */,
 				236D5888175A73F8006763A5 /* UIImage+Picker.m */,
+				236D588A175A74AD006763A5 /* UIImage+HTLong.h */,
+				236D588B175A74AD006763A5 /* UIImage+HTLong.m */,
+				236D588C175A74AD006763A5 /* UIView+FirstResponder.h */,
+				236D588D175A74AD006763A5 /* UIView+FirstResponder.m */,
+				236D588E175A74AD006763A5 /* NSObject+HijackMethod.h */,
+				236D588F175A74AD006763A5 /* NSObject+HijackMethod.m */,
+				236D5890175A74AE006763A5 /* UIResponder+FirstresponderNotification.h */,
+				236D5891175A74AE006763A5 /* UIResponder+FirstresponderNotification.m */,
+				236D5892175A74AE006763A5 /* NSObject+SimpleClassChecking.h */,
+				236D5893175A74AE006763A5 /* NSObject+SimpleClassChecking.m */,
+				236D5894175A74AE006763A5 /* UIViewController+Hierarchy.h */,
+				236D5895175A74AE006763A5 /* UIViewController+Hierarchy.m */,
+				236D58B5175A755A006763A5 /* UIImage+MeetyProcess.h */,
+				236D58B6175A755B006763A5 /* UIImage+MeetyProcess.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		236D589C175A74CA006763A5 /* StackBlur */ = {
+			isa = PBXGroup;
+			children = (
+				236D589D175A74D1006763A5 /* UIImage+StackBlur.h */,
+				236D589E175A74D1006763A5 /* UIImage+StackBlur.m */,
+			);
+			name = StackBlur;
+			sourceTree = "<group>";
+		};
+		236D58A0175A74E4006763A5 /* UIImageAdjust */ = {
+			isa = PBXGroup;
+			children = (
+				236D58A1175A74EF006763A5 /* UIImage+AutoLevels.h */,
+				236D58A2175A74EF006763A5 /* UIImage+AutoLevels.m */,
+				236D58A3175A74EF006763A5 /* UIImage+Brightness.h */,
+				236D58A4175A74EF006763A5 /* UIImage+Brightness.m */,
+				236D58A5175A74EF006763A5 /* UIImage+Contrast.h */,
+				236D58A6175A74EF006763A5 /* UIImage+Contrast.m */,
+				236D58A7175A74EF006763A5 /* UIImage+FixRotation.h */,
+				236D58A8175A74EF006763A5 /* UIImage+FixRotation.m */,
+				236D58A9175A74EF006763A5 /* UIImage+Gaussian.h */,
+				236D58AA175A74EF006763A5 /* UIImage+Gaussian.m */,
+				236D58AB175A74EF006763A5 /* UIImage+Thumbnail.h */,
+				236D58AC175A74EF006763A5 /* UIImage+Thumbnail.m */,
+			);
+			name = UIImageAdjust;
 			sourceTree = "<group>";
 		};
 		306FFDA31759ECE10025214A = {
@@ -396,6 +485,8 @@
 		306FFDCF1759EEFD0025214A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				236D58A0175A74E4006763A5 /* UIImageAdjust */,
+				236D589C175A74CA006763A5 /* StackBlur */,
 				236D58411759F23F006763A5 /* HTPyFunctions.xcodeproj */,
 				236D583B1759F1F1006763A5 /* HTBlock.xcodeproj */,
 				236D58041759F175006763A5 /* HTLibrary */,
@@ -602,6 +693,21 @@
 				236D5879175A61C2006763A5 /* ITComment.m in Sources */,
 				236D5886175A7280006763A5 /* UIImage+MeetyBlur.m in Sources */,
 				236D5889175A73F8006763A5 /* UIImage+Picker.m in Sources */,
+				236D5896175A74AE006763A5 /* UIImage+HTLong.m in Sources */,
+				236D5897175A74AE006763A5 /* UIView+FirstResponder.m in Sources */,
+				236D5898175A74AE006763A5 /* NSObject+HijackMethod.m in Sources */,
+				236D5899175A74AE006763A5 /* UIResponder+FirstresponderNotification.m in Sources */,
+				236D589A175A74AE006763A5 /* NSObject+SimpleClassChecking.m in Sources */,
+				236D589B175A74AE006763A5 /* UIViewController+Hierarchy.m in Sources */,
+				236D589F175A74D1006763A5 /* UIImage+StackBlur.m in Sources */,
+				236D58AD175A74EF006763A5 /* UIImage+AutoLevels.m in Sources */,
+				236D58AE175A74EF006763A5 /* UIImage+Brightness.m in Sources */,
+				236D58AF175A74EF006763A5 /* UIImage+Contrast.m in Sources */,
+				236D58B0175A74EF006763A5 /* UIImage+FixRotation.m in Sources */,
+				236D58B1175A74EF006763A5 /* UIImage+Gaussian.m in Sources */,
+				236D58B2175A74EF006763A5 /* UIImage+Thumbnail.m in Sources */,
+				236D58B7175A755B006763A5 /* UIImage+MeetyProcess.m in Sources */,
+				236D58B8175A7588006763A5 /* MeetyFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
