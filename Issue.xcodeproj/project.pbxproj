@@ -56,6 +56,9 @@
 		236D58B2175A74EF006763A5 /* UIImage+Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58AC175A74EF006763A5 /* UIImage+Thumbnail.m */; };
 		236D58B7175A755B006763A5 /* UIImage+MeetyProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58B6175A755B006763A5 /* UIImage+MeetyProcess.m */; };
 		236D58B8175A7588006763A5 /* MeetyFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D58B4175A752F006763A5 /* MeetyFunctions.m */; };
+		236D58BD175A87ED006763A5 /* edit_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58BB175A87ED006763A5 /* edit_back@2x.png */; };
+		236D58BE175A87ED006763A5 /* edit_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 236D58BC175A87ED006763A5 /* edit_back.png */; };
+		236D58CD175A8890006763A5 /* libMeetyClipView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 236D58CA175A8870006763A5 /* libMeetyClipView.a */; };
 		300F8DEA175A5CD0004E0FDE /* ITPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */; };
 		306FFDB01759ECE10025214A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDAF1759ECE10025214A /* UIKit.framework */; };
 		306FFDB21759ECE10025214A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB11759ECE10025214A /* Foundation.framework */; };
@@ -116,6 +119,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 238ECDD616C8CE2B000BFB53;
 			remoteInfo = HTBlock;
+		};
+		236D58C9175A8870006763A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 236D58C5175A886F006763A5 /* MeetyClipView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 23E96C8716259C19003E6539;
+			remoteInfo = MeetyClipView;
+		};
+		236D58CB175A888E006763A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 236D58C5175A886F006763A5 /* MeetyClipView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 23E96C8616259C19003E6539;
+			remoteInfo = MeetyClipView;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -213,6 +230,9 @@
 		236D58B4175A752F006763A5 /* MeetyFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetyFunctions.m; sourceTree = "<group>"; };
 		236D58B5175A755A006763A5 /* UIImage+MeetyProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MeetyProcess.h"; sourceTree = "<group>"; };
 		236D58B6175A755B006763A5 /* UIImage+MeetyProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MeetyProcess.m"; sourceTree = "<group>"; };
+		236D58BB175A87ED006763A5 /* edit_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_back@2x.png"; sourceTree = "<group>"; };
+		236D58BC175A87ED006763A5 /* edit_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_back.png; sourceTree = "<group>"; };
+		236D58C5175A886F006763A5 /* MeetyClipView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MeetyClipView.xcodeproj; path = MeetyClipView/MeetyClipView.xcodeproj; sourceTree = SOURCE_ROOT; };
 		300F8DE8175A5CD0004E0FDE /* ITPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPhotoViewController.h; sourceTree = "<group>"; };
 		300F8DE9175A5CD0004E0FDE /* ITPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITPhotoViewController.m; sourceTree = "<group>"; };
 		306FFDAC1759ECE10025214A /* Issue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				236D58CD175A8890006763A5 /* libMeetyClipView.a in Frameworks */,
 				236D58551759F482006763A5 /* MobileCoreServices.framework in Frameworks */,
 				236D58531759F3E6006763A5 /* SystemConfiguration.framework in Frameworks */,
 				236D58511759F3DD006763A5 /* CFNetwork.framework in Frameworks */,
@@ -423,6 +444,31 @@
 			name = UIImageAdjust;
 			sourceTree = "<group>";
 		};
+		236D58B9175A87CD006763A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				236D58BA175A87D2006763A5 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		236D58BA175A87D2006763A5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				236D58BB175A87ED006763A5 /* edit_back@2x.png */,
+				236D58BC175A87ED006763A5 /* edit_back.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		236D58C6175A886F006763A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				236D58CA175A8870006763A5 /* libMeetyClipView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		306FFDA31759ECE10025214A = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +502,7 @@
 		306FFDB51759ECE10025214A /* Issue */ = {
 			isa = PBXGroup;
 			children = (
+				236D58B9175A87CD006763A5 /* Resources */,
 				236D5882175A7278006763A5 /* Categories */,
 				236D5861175A3384006763A5 /* Utils */,
 				236D5858175A32DE006763A5 /* Models */,
@@ -487,6 +534,7 @@
 			children = (
 				236D58A0175A74E4006763A5 /* UIImageAdjust */,
 				236D589C175A74CA006763A5 /* StackBlur */,
+				236D58C5175A886F006763A5 /* MeetyClipView.xcodeproj */,
 				236D58411759F23F006763A5 /* HTPyFunctions.xcodeproj */,
 				236D583B1759F1F1006763A5 /* HTBlock.xcodeproj */,
 				236D58041759F175006763A5 /* HTLibrary */,
@@ -561,6 +609,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				236D58CC175A888E006763A5 /* PBXTargetDependency */,
 				236D584D1759F3D1006763A5 /* PBXTargetDependency */,
 				236D584B1759F3CE006763A5 /* PBXTargetDependency */,
 			);
@@ -597,6 +646,10 @@
 					ProductGroup = 236D58421759F23F006763A5 /* Products */;
 					ProjectRef = 236D58411759F23F006763A5 /* HTPyFunctions.xcodeproj */;
 				},
+				{
+					ProductGroup = 236D58C6175A886F006763A5 /* Products */;
+					ProjectRef = 236D58C5175A886F006763A5 /* MeetyClipView.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -627,6 +680,13 @@
 			remoteRef = 236D58481759F23F006763A5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		236D58CA175A8870006763A5 /* libMeetyClipView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMeetyClipView.a;
+			remoteRef = 236D58C9175A8870006763A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -638,6 +698,8 @@
 				306FFDC21759ECE10025214A /* Default.png in Resources */,
 				306FFDC41759ECE10025214A /* Default@2x.png in Resources */,
 				306FFDC61759ECE10025214A /* Default-568h@2x.png in Resources */,
+				236D58BD175A87ED006763A5 /* edit_back@2x.png in Resources */,
+				236D58BE175A87ED006763A5 /* edit_back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +786,11 @@
 			name = HTBlock;
 			targetProxy = 236D584C1759F3D1006763A5 /* PBXContainerItemProxy */;
 		};
+		236D58CC175A888E006763A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MeetyClipView;
+			targetProxy = 236D58CB175A888E006763A5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -807,7 +874,7 @@
 				INFOPLIST_FILE = "Issue/Issue-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "HTBlock/** HTPyFunctions/**";
+				USER_HEADER_SEARCH_PATHS = "HTBlock/** HTPyFunctions/** MeetyClipView/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -821,7 +888,7 @@
 				INFOPLIST_FILE = "Issue/Issue-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "HTBlock/** HTPyFunctions/**";
+				USER_HEADER_SEARCH_PATHS = "HTBlock/** HTPyFunctions/** MeetyClipView/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
