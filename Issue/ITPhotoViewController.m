@@ -13,7 +13,6 @@
 #define CommentStartRow 3
 
 @implementation ITPhotoViewController
-@synthesize tableView = _tableView, photo = _photo;
 
 - (void)viewDidLoad
 {

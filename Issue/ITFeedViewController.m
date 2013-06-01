@@ -15,7 +15,6 @@
 #import "UIImage+Picker.h"
 
 @implementation ITFeedViewController
-@synthesize tableView = _tableView;
 
 - (id)init{
     self = [super init];
@@ -38,7 +37,15 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorColor = [UIColor clearColor];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:_tableView];
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    UIRefreshControl *refreshControl = _refreshControl;
+    [refreshControl addTargetBlock:^(id sender){
+        [self refresh];
+    } forControlEvents:UIControlEventValueChanged];
+    [_tableView addSubview:_refreshControl];
+    
     [self refresh];
 }
 
@@ -55,22 +62,17 @@
             NSLog(@"success");
             self.data = feedList;
             [_tableView reloadData];
+            [_refreshControl endRefreshing];
         } failureBlock:^(NSHTTPURLResponse *response, NSError *error) {
             NSLog(@"failed");
+            [_refreshControl endRefreshing];
         }];
         [feedRequest startAsync];
     } failureBlock:^(NSHTTPURLResponse *response, NSError *error){
         NSLog(@"failed");
+        [_refreshControl endRefreshing];
     }];
     [issueRequest startAsync];
-    /*
-    self.data = @[@{@"type": @"picture",
-                    @"username": @"Danny",
-                    @"url": @"https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-prn2/216339_652035021489348_692528687_n.jpg"},
-                  @{@"type": @"picture",
-                    @"username": @"Hardtack",
-                    @"url": @"https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-prn1/936289_523311267723475_240678048_n.jpg"}];
-     */
 }
 
 - (void)imageTouched:(UIButton*)button{

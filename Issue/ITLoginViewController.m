@@ -13,8 +13,6 @@
 
 
 @implementation ITLoginViewController
-@synthesize usernameLabel = _usernameLabel, usernameField = _usernameField,
-            passwordLabel = _passwordLabel, passwordField = _passwordField;
 
 - (void)viewDidLoad
 {

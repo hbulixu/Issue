@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
