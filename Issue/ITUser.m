@@ -16,6 +16,8 @@
     if (self) {
         self.id = [ITConverter convertToInteger:dict[@"id"] default:0];
         self.username = [ITConverter convert:dict[@"username"]];
+        NSString *imageURLString = [ITConverter convert:dict[@"image_url"]];
+        self.imageURL = imageURLString==nil?nil:[NSURL URLWithString:imageURLString];
     }
     return self;
 }

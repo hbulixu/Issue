@@ -36,6 +36,9 @@
 		236D5867175A398C006763A5 /* ITRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5866175A398C006763A5 /* ITRequest.m */; };
 		236D586A175A3C42006763A5 /* ITFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5869175A3C42006763A5 /* ITFile.m */; };
 		236D586D175A3D16006763A5 /* ITURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D586C175A3D16006763A5 /* ITURLRequest.m */; };
+		236D5872175A5D55006763A5 /* ITIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5871175A5D55006763A5 /* ITIssue.m */; };
+		236D5876175A5E5C006763A5 /* ITPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5875175A5E5C006763A5 /* ITPhoto.m */; };
+		236D5879175A61C2006763A5 /* ITComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5878175A61C2006763A5 /* ITComment.m */; };
 		306FFDB01759ECE10025214A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDAF1759ECE10025214A /* UIKit.framework */; };
 		306FFDB21759ECE10025214A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB11759ECE10025214A /* Foundation.framework */; };
 		306FFDB41759ECE10025214A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB31759ECE10025214A /* CoreGraphics.framework */; };
@@ -152,6 +155,12 @@
 		236D5869175A3C42006763A5 /* ITFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFile.m; sourceTree = "<group>"; };
 		236D586B175A3D16006763A5 /* ITURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITURLRequest.h; sourceTree = "<group>"; };
 		236D586C175A3D16006763A5 /* ITURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITURLRequest.m; sourceTree = "<group>"; };
+		236D5870175A5D55006763A5 /* ITIssue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITIssue.h; sourceTree = "<group>"; };
+		236D5871175A5D55006763A5 /* ITIssue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITIssue.m; sourceTree = "<group>"; };
+		236D5874175A5E5C006763A5 /* ITPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITPhoto.h; sourceTree = "<group>"; };
+		236D5875175A5E5C006763A5 /* ITPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITPhoto.m; sourceTree = "<group>"; };
+		236D5877175A61C2006763A5 /* ITComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITComment.h; sourceTree = "<group>"; };
+		236D5878175A61C2006763A5 /* ITComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITComment.m; sourceTree = "<group>"; };
 		306FFDAC1759ECE10025214A /* Issue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306FFDAF1759ECE10025214A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		306FFDB11759ECE10025214A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -280,6 +289,12 @@
 				236D585B175A32E8006763A5 /* ITModel.m */,
 				236D585D175A3350006763A5 /* ITUser.h */,
 				236D585E175A3350006763A5 /* ITUser.m */,
+				236D5870175A5D55006763A5 /* ITIssue.h */,
+				236D5871175A5D55006763A5 /* ITIssue.m */,
+				236D5874175A5E5C006763A5 /* ITPhoto.h */,
+				236D5875175A5E5C006763A5 /* ITPhoto.m */,
+				236D5877175A61C2006763A5 /* ITComment.h */,
+				236D5878175A61C2006763A5 /* ITComment.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -558,6 +573,9 @@
 				236D5867175A398C006763A5 /* ITRequest.m in Sources */,
 				236D586A175A3C42006763A5 /* ITFile.m in Sources */,
 				236D586D175A3D16006763A5 /* ITURLRequest.m in Sources */,
+				236D5872175A5D55006763A5 /* ITIssue.m in Sources */,
+				236D5876175A5E5C006763A5 /* ITPhoto.m in Sources */,
+				236D5879175A61C2006763A5 /* ITComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
