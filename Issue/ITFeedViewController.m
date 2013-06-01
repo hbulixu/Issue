@@ -19,6 +19,7 @@
 @interface ITFeedViewController ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) ITIssue *issue;
 
 @end
 
@@ -41,7 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];
     
     // BG
     UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"edit_back"]];
@@ -58,10 +58,10 @@
     [self.titleLabel sizeToFit];
     self.titleLabel.centerY = 22;
     self.titleLabel.centerX = self.view.width / 2;
-//    self.titleLabel.layer.shadowRadius = 0;
-//    self.titleLabel.layer.shadowOpacity = 0.8;
-//    self.titleLabel.layer.shadowOffset = CGSizeMake(1,1);
-//    self.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    //    self.titleLabel.layer.shadowRadius = 0;
+    //    self.titleLabel.layer.shadowOpacity = 0.8;
+    //    self.titleLabel.layer.shadowOffset = CGSizeMake(1,1);
+    //    self.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     [self.view addSubview:self.titleLabel];
     
     // Plus
@@ -83,8 +83,10 @@
                                                             form:form
                                                            files:file];
             [request setSuccessBlock:^(NSHTTPURLResponse *response, ITPhoto *photo) {
+                [picker dismissViewControllerAnimated:YES completion:nil];
                 NSLog(@"success");
             } failureBlock:^(NSHTTPURLResponse *response, NSError *error) {
+                [picker dismissViewControllerAnimated:YES completion:nil];
                 NSLog(@"failed");
             }];
             [request start];
@@ -104,6 +106,8 @@
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     _tableView.height -= 44;
     _tableView.top += 44;
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _tableView.showsVerticalScrollIndicator = YES;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorColor = [UIColor clearColor];
@@ -126,6 +130,7 @@
     // Update data with self.URL
     ITRequest *issueRequest = [ITRequest requestWithURLString:@"/issue/current" method:@"GET" getArgs:@{}];
     [issueRequest setSuccessBlock:^(NSHTTPURLResponse *response, ITIssue *issue){
+        self.issue = issue;
         ITRequest *feedRequest = [ITRequest requestWithURLString:[NSString stringWithFormat:@"/issue/%d/photo/", issue.id]
                                                           method:@"GET"
                                                          getArgs:@{}];
@@ -155,13 +160,60 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return 1;
+    }
     if(_data.count > 0){
         return 1 + (_data.count-1) / 2 + (_data.count-1) % 2;
     }
     return 0;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        static NSString *identifier = @"InfoID";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 308, 151)];
+            view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+            view.layer.cornerRadius = 5.0;
+            view.layer.masksToBounds = YES;
+            view.x = 6;
+            view.y = 3;
+            view.layer.shadowColor = [UIColor blackColor].CGColor;
+            view.layer.shadowOpacity = 0.8;
+            view.layer.shadowRadius = 1.0;
+            view.layer.shadowOffset = CGSizeMake(1, 1);
+            view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+            view.layer.shouldRasterize = YES;
+            
+            UITextView *tv = [[UITextView alloc] initWithFrame:view.bounds];
+            tv.userInteractionEnabled = NO;
+            tv.tag = 1;
+            tv.width -= 10 + view.left;
+            tv.top += 5 + view.left;
+            tv.left += 5 + view.top;
+            tv.backgroundColor = [UIColor clearColor];
+            tv.textColor = [UIColor blackColor];
+            
+            [cell addSubview:view];
+            [cell addSubview:tv];
+        }
+        for (UITextView *tv in [cell subviews]){
+            if (tv.tag != 1) {
+                continue;
+            }
+            tv.text = [NSString stringWithFormat:@"%@\n===============\n%@",self.issue.title, self.issue.description];
+        }
+        return cell;
+    }
+    
     if (indexPath.row == 0) { // Top
         static NSString *identifier = @"TopID";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -268,7 +320,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 157;
+    }
     return 157;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 @end
