@@ -30,6 +30,12 @@
 		236D58511759F3DD006763A5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236D58501759F3DD006763A5 /* CFNetwork.framework */; };
 		236D58531759F3E6006763A5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236D58521759F3E6006763A5 /* SystemConfiguration.framework */; };
 		236D58551759F482006763A5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236D58541759F482006763A5 /* MobileCoreServices.framework */; };
+		236D585C175A32E8006763A5 /* ITModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D585B175A32E8006763A5 /* ITModel.m */; };
+		236D585F175A3350006763A5 /* ITUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D585E175A3350006763A5 /* ITUser.m */; };
+		236D5864175A339B006763A5 /* ITConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5863175A339B006763A5 /* ITConverter.m */; };
+		236D5867175A398C006763A5 /* ITRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5866175A398C006763A5 /* ITRequest.m */; };
+		236D586A175A3C42006763A5 /* ITFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D5869175A3C42006763A5 /* ITFile.m */; };
+		236D586D175A3D16006763A5 /* ITURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D586C175A3D16006763A5 /* ITURLRequest.m */; };
 		306FFDB01759ECE10025214A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDAF1759ECE10025214A /* UIKit.framework */; };
 		306FFDB21759ECE10025214A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB11759ECE10025214A /* Foundation.framework */; };
 		306FFDB41759ECE10025214A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306FFDB31759ECE10025214A /* CoreGraphics.framework */; };
@@ -134,6 +140,18 @@
 		236D58501759F3DD006763A5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		236D58521759F3E6006763A5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		236D58541759F482006763A5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		236D585A175A32E8006763A5 /* ITModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITModel.h; sourceTree = "<group>"; };
+		236D585B175A32E8006763A5 /* ITModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITModel.m; sourceTree = "<group>"; };
+		236D585D175A3350006763A5 /* ITUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUser.h; sourceTree = "<group>"; };
+		236D585E175A3350006763A5 /* ITUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUser.m; sourceTree = "<group>"; };
+		236D5862175A339B006763A5 /* ITConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITConverter.h; sourceTree = "<group>"; };
+		236D5863175A339B006763A5 /* ITConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITConverter.m; sourceTree = "<group>"; };
+		236D5865175A398C006763A5 /* ITRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITRequest.h; sourceTree = "<group>"; };
+		236D5866175A398C006763A5 /* ITRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITRequest.m; sourceTree = "<group>"; };
+		236D5868175A3C42006763A5 /* ITFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFile.h; sourceTree = "<group>"; };
+		236D5869175A3C42006763A5 /* ITFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFile.m; sourceTree = "<group>"; };
+		236D586B175A3D16006763A5 /* ITURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITURLRequest.h; sourceTree = "<group>"; };
+		236D586C175A3D16006763A5 /* ITURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITURLRequest.m; sourceTree = "<group>"; };
 		306FFDAC1759ECE10025214A /* Issue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306FFDAF1759ECE10025214A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		306FFDB11759ECE10025214A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -255,6 +273,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		236D5858175A32DE006763A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				236D585A175A32E8006763A5 /* ITModel.h */,
+				236D585B175A32E8006763A5 /* ITModel.m */,
+				236D585D175A3350006763A5 /* ITUser.h */,
+				236D585E175A3350006763A5 /* ITUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		236D5861175A3384006763A5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				236D5862175A339B006763A5 /* ITConverter.h */,
+				236D5863175A339B006763A5 /* ITConverter.m */,
+				236D586B175A3D16006763A5 /* ITURLRequest.h */,
+				236D586C175A3D16006763A5 /* ITURLRequest.m */,
+				236D5865175A398C006763A5 /* ITRequest.h */,
+				236D5866175A398C006763A5 /* ITRequest.m */,
+				236D5868175A3C42006763A5 /* ITFile.h */,
+				236D5869175A3C42006763A5 /* ITFile.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		306FFDA31759ECE10025214A = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +332,8 @@
 		306FFDB51759ECE10025214A /* Issue */ = {
 			isa = PBXGroup;
 			children = (
+				236D5861175A3384006763A5 /* Utils */,
+				236D5858175A32DE006763A5 /* Models */,
 				306FFDCF1759EEFD0025214A /* Libraries */,
 				306FFDEF175A0C4C0025214A /* Issue Tracker */,
 				306FFDBE1759ECE10025214A /* AppDelegate.h */,
@@ -506,6 +552,12 @@
 				306FFDF6175A17980025214A /* ITFeedViewController.m in Sources */,
 				306FFDF9175A28CA0025214A /* ITLoginViewController.m in Sources */,
 				306FFDFD175A34240025214A /* ITUtil.m in Sources */,
+				236D585C175A32E8006763A5 /* ITModel.m in Sources */,
+				236D585F175A3350006763A5 /* ITUser.m in Sources */,
+				236D5864175A339B006763A5 /* ITConverter.m in Sources */,
+				236D5867175A398C006763A5 /* ITRequest.m in Sources */,
+				236D586A175A3C42006763A5 /* ITFile.m in Sources */,
+				236D586D175A3D16006763A5 /* ITURLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
