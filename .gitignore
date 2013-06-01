@@ -11,3 +11,4 @@ Documentation/Generated
 doxygenWarnings.txt
 *.xcuserdatad
 Issue.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+Issue.xcodeproj/xcuserdata/*

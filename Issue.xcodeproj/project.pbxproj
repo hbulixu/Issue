@@ -651,12 +651,13 @@
 		306FFDCA1759ECE10025214A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Issue/Issue-Prefix.pch";
 				INFOPLIST_FILE = "Issue/Issue-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "../HTBlock/** ../HTPyFunctions/**";
+				USER_HEADER_SEARCH_PATHS = "HTBlock/** HTPyFunctions/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -664,12 +665,13 @@
 		306FFDCB1759ECE10025214A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Issue/Issue-Prefix.pch";
 				INFOPLIST_FILE = "Issue/Issue-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "../HTBlock/** ../HTPyFunctions/**";
+				USER_HEADER_SEARCH_PATHS = "HTBlock/** HTPyFunctions/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
