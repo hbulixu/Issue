@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ITPhoto.h"
 
 @interface ITPhotoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) ITPhoto *photo;
 
 @end

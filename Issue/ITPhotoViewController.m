@@ -13,7 +13,7 @@
 #define CommentStartRow 3
 
 @implementation ITPhotoViewController
-@synthesize tableView = _tableView, URL = _URL;
+@synthesize tableView = _tableView, photo = _photo;
 
 - (void)viewDidLoad
 {
@@ -29,7 +29,7 @@
 
 - (void)loadComment{
     // fetch comments asynchronous
-    NSURL *commentURL = [NSURL URLWithString:[[_URL absoluteString] stringByAppendingPathComponent:@"/comment"]];
+    NSURL *commentURL = [NSURL URLWithString:[[_photo.imageURL absoluteString] stringByAppendingPathComponent:@"/comment"]];
     ITRequest *request = [ITRequest requestWithURL:commentURL method:@"GET"];
     [request setSuccessBlock:^(NSHTTPURLResponse *response, id object){
         NSLog(@"success");
@@ -57,17 +57,17 @@
     if(cell == nil){
         if(indexPath.row == 0){
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(6, 6, 302, 302)];
-            [imageView setImageWithURL:_URL];
+            [imageView setImageWithURL:_photo.imageURL];
             [cell addSubview:imageView];
         }
         else if(indexPath.row == 1){
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(6, 3, 302, 24)];
-            label.text = @"17명이 좋아합니다.";
+            label.text = [NSString stringWithFormat:@"%d명이 좋아합니다.", _photo.likesCount];
             [cell addSubview:label];
         }
         else if(indexPath.row == 2){
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(6, 3, 302, 24)];
-            label.text = @"17개의 댓글";
+            label.text = [NSString stringWithFormat:@"%d개의 댓글", _photo.commentsCount];
             [cell addSubview:label];
         }
         else{

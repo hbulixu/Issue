@@ -44,9 +44,7 @@
     
     if(![ITUtil loadSessionCookie]){
         ITLoginViewController *loginView = [[ITLoginViewController alloc] init];
-        [self.window.rootViewController presentViewController:loginView animated:NO completion:^{
-            NSLog(@"LoginView loaded");
-        }];
+        [self.window.rootViewController presentViewController:loginView animated:NO completion:nil];
     }
     
     return YES;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ITFeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ITFeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;

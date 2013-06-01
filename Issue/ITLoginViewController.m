@@ -59,6 +59,7 @@
         ITRequest *request = [ITRequest requestWithURLString:@"/login" method:@"POST" getArgs:@{} form:params files:nil];
         [request setSuccessBlock:^(NSHTTPURLResponse* response, id object){
             [ITUtil updateSession];
+            [ITUtil loadSessionCookie];
             [self dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"success");
             }];
