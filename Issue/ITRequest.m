@@ -11,8 +11,12 @@
 #import "ITURLRequest.h"
 #import "ITConverter.h"
 #import "NSDataAdditions.h"
+#import "MBProgressHUD.h"
 
 @interface ITRequest ()
+
+@property (nonatomic, strong) UIView* view;
+@property (nonatomic) BOOL uploadProgress;
 
 @end
 
@@ -23,6 +27,14 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
 #pragma mark - Private methods
 
 - (void)sendRequest {
+    MBProgressHUD *hud = nil;
+    if (self.view) {
+        hud = [[MBProgressHUD alloc] initWithView:self.view];
+        [hud setAnimationType:MBProgressHUDAnimationFade];
+        [hud setRemoveFromSuperViewOnHide:YES];
+        [self.view addSubview:hud];
+        [hud show:YES];
+    }
     ITURLRequest *request = [[ITURLRequest alloc] initWithURL:self.URL];
     if ([self.form count] > 0 || [self.files count] > 0){
         [request setForm:self.form files:self.files];
@@ -38,14 +50,23 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
     
     AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [hud hide:YES];
         self.executing = NO;
         self.finished = YES;
         self.successBlock(operation.response, [ITConverter convertResposne:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [hud hide:YES];
         self.executing = NO;
         self.finished = YES;
         self.failureBlock(operation.response, error);
     }];
+    if (hud && self.uploadProgress){
+        hud.mode = MBProgressHUDModeDeterminate;
+        [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            hud.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+            hud.labelText = NSLocalizedString(@"Uploading", @"Uploading");
+        }];
+    }
     [operation start];
     self.operation = operation;
 }
@@ -141,6 +162,18 @@ static NSString *const HostURLString = @"http://ec2-54-248-49-157.ap-northeast-1
         selector = @selector(sendRequest);
     });
     [self performSelector:@selector(sendRequest) onThread:[[self class] requestThread] withObject:nil waitUntilDone:NO];
+}
+
+- (void)startWithHUDInView:(UIView*)view{
+    self.uploadProgress = NO;
+    self.view = view;
+    [self start];
+}
+
+- (void)startWithUploadHUDInView:(UIView *)view{
+    self.uploadProgress = YES;
+    self.view = view;
+    [self start];
 }
 
 - (void)cancel{

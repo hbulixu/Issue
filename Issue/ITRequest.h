@@ -34,4 +34,7 @@
 + (ITRequest *)requestWithURLString:(NSString *)URLString method:(NSString*)method getArgs:(NSDictionary *)getArgs;
 + (ITRequest *)requestWithURLString:(NSString *)URLString method:(NSString*)method getArgs:(NSDictionary *)getArgs form:(NSDictionary *)form files:(NSDictionary *)files;
 
+- (void)startWithHUDInView:(UIView*)view;
+- (void)startWithUploadHUDInView:(UIView*)view;
+
 @end

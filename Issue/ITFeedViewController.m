@@ -72,24 +72,23 @@
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [picker setFinishBlock:^(UIImagePickerController *picker, NSDictionary *info) {
+            [picker dismissViewControllerAnimated:YES completion:nil];
             UIImage *image = [UIImage imageWithPickerInfo:info];
             NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
             ITFile *imageFile = [ITFile fileWithData:imageData name:@"image.jpg" mimeType:@"image/jpeg"];
             NSDictionary *form = @{@"content": @"contentyoyoyo"},
             *file = @{@"image": imageFile};
-            ITRequest *request = [ITRequest requestWithURLString:@"/issue/1/photo/"
+            ITRequest *request = [ITRequest requestWithURLString:[NSString stringWithFormat:@"/issue/%d/photo/", self.issue.id]
                                                           method:@"POST"
                                                          getArgs:@{}
                                                             form:form
                                                            files:file];
             [request setSuccessBlock:^(NSHTTPURLResponse *response, ITPhoto *photo) {
-                [picker dismissViewControllerAnimated:YES completion:nil];
                 NSLog(@"success");
             } failureBlock:^(NSHTTPURLResponse *response, NSError *error) {
-                [picker dismissViewControllerAnimated:YES completion:nil];
                 NSLog(@"failed");
             }];
-            [request start];
+            [request startWithUploadHUDInView:self.view];
             
         }];
         [picker setCancelBlock:^(UIImagePickerController *picker) {
@@ -148,7 +147,7 @@
         NSLog(@"failed");
         [_refreshControl endRefreshing];
     }];
-    [issueRequest startAsync];
+    [issueRequest startWithHUDInView:self.view];
 }
 
 - (void)imageTouched:(UIButton*)button{
