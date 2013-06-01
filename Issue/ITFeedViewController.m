@@ -185,7 +185,7 @@
             imageView1.layer.masksToBounds = YES;
             
             
-            imageButton1.tag = indexPath.row * 2;
+            imageButton1.tag = 0;
             [imageButton1 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
             [imageButton1 addSubview:imageView1];
             // Shadow
@@ -250,7 +250,7 @@
                 frame.origin.x = 163;
                 frame.origin.y = 3;
                 UIButton *imageButton2 = [[UIButton alloc] initWithFrame:frame];
-                imageButton2.tag = indexPath.row * 2 + 1;
+                imageButton2.tag = indexPath.row * 2;
                 [imageButton2 addTarget:self action:@selector(imageTouched:) forControlEvents:UIControlEventTouchUpInside];
                 [imageButton2 addSubview:imageView2];
                 
