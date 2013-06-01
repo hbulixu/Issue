@@ -48,6 +48,10 @@
 		306FFDEA1759EF510025214A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDDF1759EF510025214A /* AFURLConnectionOperation.m */; };
 		306FFDEB1759EF510025214A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDE11759EF510025214A /* AFXMLRequestOperation.m */; };
 		306FFDEC1759EF510025214A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDE31759EF510025214A /* UIImageView+AFNetworking.m */; };
+		306FFDF3175A16320025214A /* ITNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDF2175A16320025214A /* ITNavigationController.m */; };
+		306FFDF6175A17980025214A /* ITFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDF5175A17980025214A /* ITFeedViewController.m */; };
+		306FFDF9175A28CA0025214A /* ITLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDF8175A28CA0025214A /* ITLoginViewController.m */; };
+		306FFDFD175A34240025214A /* ITUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 306FFDFC175A34240025214A /* ITUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +166,14 @@
 		306FFDE11759EF510025214A /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		306FFDE21759EF510025214A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		306FFDE31759EF510025214A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		306FFDF1175A16320025214A /* ITNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITNavigationController.h; sourceTree = "<group>"; };
+		306FFDF2175A16320025214A /* ITNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITNavigationController.m; sourceTree = "<group>"; };
+		306FFDF4175A17980025214A /* ITFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITFeedViewController.h; sourceTree = "<group>"; };
+		306FFDF5175A17980025214A /* ITFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITFeedViewController.m; sourceTree = "<group>"; };
+		306FFDF7175A28CA0025214A /* ITLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITLoginViewController.h; sourceTree = "<group>"; };
+		306FFDF8175A28CA0025214A /* ITLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITLoginViewController.m; sourceTree = "<group>"; };
+		306FFDFB175A34240025214A /* ITUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITUtil.h; sourceTree = "<group>"; };
+		306FFDFC175A34240025214A /* ITUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				306FFDCF1759EEFD0025214A /* Libraries */,
+				306FFDEF175A0C4C0025214A /* Issue Tracker */,
 				306FFDBE1759ECE10025214A /* AppDelegate.h */,
 				306FFDBF1759ECE10025214A /* AppDelegate.m */,
 				306FFDB61759ECE10025214A /* Supporting Files */,
@@ -335,6 +348,29 @@
 			name = AFNetworking;
 			path = AFNetworking/AFNetworking;
 			sourceTree = SOURCE_ROOT;
+		};
+		306FFDEF175A0C4C0025214A /* Issue Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				306FFDFA175A34100025214A /* Common */,
+				306FFDF7175A28CA0025214A /* ITLoginViewController.h */,
+				306FFDF8175A28CA0025214A /* ITLoginViewController.m */,
+				306FFDF1175A16320025214A /* ITNavigationController.h */,
+				306FFDF2175A16320025214A /* ITNavigationController.m */,
+				306FFDF4175A17980025214A /* ITFeedViewController.h */,
+				306FFDF5175A17980025214A /* ITFeedViewController.m */,
+			);
+			name = "Issue Tracker";
+			sourceTree = "<group>";
+		};
+		306FFDFA175A34100025214A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				306FFDFB175A34240025214A /* ITUtil.h */,
+				306FFDFC175A34240025214A /* ITUtil.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -466,6 +502,10 @@
 				236D58381759F17D006763A5 /* UIImage+SizeAddition.m in Sources */,
 				236D58391759F17D006763A5 /* UIScrollView+Paging.m in Sources */,
 				236D583A1759F17D006763A5 /* UIView+FrameAddition.m in Sources */,
+				306FFDF3175A16320025214A /* ITNavigationController.m in Sources */,
+				306FFDF6175A17980025214A /* ITFeedViewController.m in Sources */,
+				306FFDF9175A28CA0025214A /* ITLoginViewController.m in Sources */,
+				306FFDFD175A34240025214A /* ITUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

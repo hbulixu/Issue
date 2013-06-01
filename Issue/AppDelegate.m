@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "ITNavigationController.h"
+#import "ITFeedViewController.h"
+#import "ITLoginViewController.h"
+#import "ITUtil.h"
 
 @implementation AppDelegate
 
@@ -16,6 +20,18 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    ITFeedViewController *feedView = [[ITFeedViewController alloc] init];
+    ITNavigationController *nav = [[ITNavigationController alloc] initWithRootViewController:feedView];
+    [self.window setRootViewController:nav];
+    
+    if(![ITUtil loadSessionCookie]){
+        ITLoginViewController *loginView = [[ITLoginViewController alloc] init];
+        [self.window.rootViewController presentViewController:loginView animated:NO completion:^{
+            NSLog(@"LoginView loaded");
+        }];
+    }
+    
     return YES;
 }
 
