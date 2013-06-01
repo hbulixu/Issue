@@ -15,6 +15,7 @@
 #import "UIImage+Picker.h"
 #import "ITPhotoViewController.h"
 #import "ITUploadViewController.h"
+#import "ITFeedCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ITFeedViewController ()
@@ -172,7 +173,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 308, 151)];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 308, 94)];
             view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
             view.layer.cornerRadius = 5.0;
             view.layer.masksToBounds = YES;
@@ -202,7 +203,7 @@
                 continue;
             }
             if (self.issue){
-                tv.text = [NSString stringWithFormat:@"%@\n===============\n%@",self.issue.title, self.issue.description];
+                tv.text = [NSString stringWithFormat:@"주제 : %@\n==================\n%@",self.issue.title, self.issue.description];
             } else{
                 tv.text = @"Loading...";
             }
@@ -248,13 +249,11 @@
         return cell;
     } else {
         static NSString *identifier = @"FeedViewCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        ITFeedCell *cell = (ITFeedCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
         if(cell == nil){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [[ITFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
-            NSURL *url = [(ITPhoto*)[_data objectAtIndex:(indexPath.row-1) * 2 + 1] imageURL];
-            [imageView1 setImageWithURL:url];
             imageView1.backgroundColor = [UIColor grayColor];
             imageView1.tag = 1;
             CGRect frame = imageView1.bounds;
@@ -280,14 +279,13 @@
             imageButton1.layer.rasterizationScale = [[UIScreen mainScreen] scale];
             imageButton1.layer.shouldRasterize = YES;
             [cell addSubview:imageButton1];
+            cell.left = imageButton1;
             
             if(_data.count-1 >= (indexPath.row - 1 + 1) * 2){
                 UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 151)];
-                url = [(ITPhoto*)[_data objectAtIndex:indexPath.row * 2] imageURL];
-                [imageView2 setImageWithURL:url];
                 imageView2.clipsToBounds = YES;
                 imageView2.backgroundColor = [UIColor grayColor];
-                imageView2.tag = 2;
+                imageView2.tag = 1;
                 
                 // Rad
                 imageView2.layer.cornerRadius = 5.0;
@@ -309,6 +307,22 @@
                 imageButton2.layer.rasterizationScale = [[UIScreen mainScreen] scale];
                 imageButton2.layer.shouldRasterize = YES;
                 [cell addSubview:imageButton2];
+                cell.right = imageButton2;
+            }
+        }
+        for(UIImageView *iv in [cell.left subviews]){
+            if(iv.tag == 1){
+                NSURL *url = [(ITPhoto*)[_data objectAtIndex:(indexPath.row-1) * 2 + 1] imageURL];
+                [iv setImageWithURL:url];
+                
+            }
+        }
+        if(_data.count-1 >= (indexPath.row - 1 + 1) * 2){
+            for (UIImageView *iv in [cell.right subviews]) {
+                if(iv.tag == 1){
+                    NSURL *url = [(ITPhoto*)[_data objectAtIndex:indexPath.row * 2] imageURL];
+                    [iv setImageWithURL:url];
+                }
             }
         }
         return cell;
@@ -317,7 +331,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 157;
+        return 100;
     }
     return 157;
 }
