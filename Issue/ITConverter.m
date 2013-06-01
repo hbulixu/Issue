@@ -44,9 +44,9 @@
 
 + (id)convert:(id)data{
     if ([data isKindOfClass:[NSArray class]]) {
-        [self convertArray:data];
+        return [self convertArray:data];
     } else if ([data isKindOfClass:[NSDictionary class]]){
-        [self convertDictionary:data];
+        return [self convertDictionary:data];
     } else if ([data isKindOfClass:[NSNull class]]){
         return nil;
     }
