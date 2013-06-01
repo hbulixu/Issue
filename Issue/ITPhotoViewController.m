@@ -118,6 +118,18 @@
     [request start];
 }
 
+- (void)postLike:(UIButton*)button{
+    ITRequest *request = [ITRequest requestWithURLString:[NSString stringWithFormat:@"/photo/%d/like/", _photo.id]
+                                                  method:@"POST"
+                                                 getArgs:@{}];
+    [request setSuccessBlock:^(NSHTTPURLResponse *response, id object){
+        NSLog(@"success");
+    } failureBlock:^(NSHTTPURLResponse *response, NSError *error){
+        NSLog(@"failed");
+    }];
+    [request start];
+}
+
 - (void)loadContents{
     [self loadComment];
     [_tableView reloadData];
@@ -138,6 +150,11 @@
         if(indexPath.row == 0){
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(6, 6, 308, 308)];
             [imageView setImageWithURL:_photo.imageURL];
+            imageView.userInteractionEnabled = YES;
+            UIButton *likeButton = [[UIButton alloc] initWithFrame:CGRectMake(262, 262, 40, 40)];
+            [likeButton addTarget:self action:@selector(postLike:) forControlEvents:UIControlEventTouchUpInside];
+            likeButton.backgroundColor = [UIColor redColor];
+            [imageView addSubview:likeButton];
             [cell addSubview:imageView];
         }
         else if(indexPath.row == 1){
